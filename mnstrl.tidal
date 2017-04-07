@@ -1,0 +1,192 @@
+# SuperDirt.start;
+
+# s.options.numBuffers = 1024 * 16;
+
+# SuperDirt: listening to Tidal on port 57120
+
+{-----------------_-----------------_-----------------_-----------------}
+
+
+d1 $ sound "bd*2 sn*2"
+d2 $ rev $ sound "hh*8 . hh*3 "
+
+d2 $ every 2 (rev) $ (sound "hh hh*2 . hh*2 . hh*2")
+
+d1 $ sound "bd"
+# cutoff "40"
+#
+
+
+
+hush
+
+d1 $ sound "bd bd*2 . bd*2 . bd*2"
+
+d1 silence
+d2 silence
+
+d1 $ every 4 (rev) $ ( sound "bd bd:0*2 . bd:1*2 . bd:3*2" )
+
+
+d1 $ sound (brak "bd*2 . sn * 5")
+
+d1 $ sound (density 2 "bd sn kurt") # density 3 (vowel "a e o")
+
+d3 $ sound "{~ ~ ~ ~, arpy bass2 drum notes can}"
+
+d3 silence
+
+d3 $ sound "bd sn hh cp mt arpy drum odx bd arpy bass2 feel future"
+
+{-----------------_-----------------_-----------------_-----------------}
+
+# default beat to 1bps
+
+bps 1
+
+d1 $ sound "fire"
+
+hush
+
+
+
+{-----------------_-----------------_-----------------_-----------------}
+
+
+d1 $ sound "[if/2 ~ ~ if/2 ~ ~ if/2 ~ ]"
+
+d2 $ sound "[if/3 ~ ~ if/3 ~ ~ if/3 ~ ]"
+
+d3 $ sound "[ifdrumd/2 ifdrums/3 ifdrums/3 ifdrums/2 ifdrums/4 ifdrums/3 ifdrums/2 ifdrums/3]"
+
+
+{-----------------_-----------------_-----------------_-----------------}
+
+Bjorklund
+
+d1 $ sound "bd(5,8)"
+
+d1 $ e 5 8 $ sound "bd"
+
+d1 $ sound "bd(3,8) sn*2"
+
+d1 $ sound "bd(3,8) sn(5,8)"
+
+d1 $ sound "bd(5,8,2)"
+
+d1 $ e 3 8 $ sound "bd*2 [sn cp]"
+
+d1 $ sound "bd([5 3]/2,8)"
+
+hush
+
+d1 $ sound "bd(2,5)" -- A thirteenth century Persian rhythm called Khafif-e-ramal.
+d1 $ sound "bd(3,4)" -- The archetypal pattern of the Cumbia from Colombia, as well as a Calypso rhythm from Trinidad.
+d1 $ sound "bd(3,5,2)" -- Another thirteenth century Persian rhythm by the name of Khafif-e-ramal, as well as a Rumanian folk-dance rhythm.
+d1 $ sound "bd(3,7)" -- A Ruchenitza rhythm used in a Bulgarian folk-dance.
+d1 $ sound "bd(3,8)" -- The Cuban tresillo pattern.
+d1 $ sound "bd(4,7)" -- Another Ruchenitza Bulgarian folk-dance rhythm.
+d1 $ sound "bd(4,9)" -- The Aksak rhythm of Turkey.
+d1 $ sound "bd(4,11)" -- The metric pattern used by Frank Zappa in his piece titled Outside Now.
+d1 $ sound "bd(5,6)" -- Yields the York-Samai pattern, a popular Arab rhythm.
+d1 $ sound "bd(5,7)" -- The Nawakhat pattern, another popular Arab rhythm.
+d1 $ sound "bd(5,8)" -- The Cuban cinquillo pattern.
+d1 $ sound "bd(5,9)" -- A popular Arab rhythm called Agsag-Samai.
+d1 $ sound "bd(5,11)" -- The metric pattern used by Moussorgsky in Pictures at an Exhibition.
+d1 $ sound "bd(5,12)" -- The Venda clapping pattern of a South African children’s song.
+d1 $ sound "bd(5,16)" -- The Bossa-Nova rhythm necklace of Brazil.
+d1 $ sound "bd(7,8)" -- A typical rhythm played on the Bendir (frame drum).
+d1 $ sound "bd(7,12)" -- A common West African bell pattern.
+d1 $ sound "bd(7,16,14)" -- A Samba rhythm necklace from Brazil.
+d1 $ sound "bd(9,16)" -- A rhythm necklace used in the Central African Republic.
+d1 $ sound "bd(11,24,14)" -- A rhythm necklace of the Aka Pygmies of Central Africa.
+d1 $ sound "bd(13,24,5)" -- Another rhythm necklace of the Aka Pygmies of the upper Sangha.3
+
+d1 $ sound "[bd hh sn hh]"
+
+d1 $ sound "[bd hh sn hh]"
+
+d1 $ slow 2 $ sound "bd*16" # pan sine1
+
+hush
+
+
+
+{-----------------_-----------------_-----------------_-----------------}
+
+Guy - haskell tidal tutorial
+
+:t 'a'
+:t 1
+
+let str = "Hello , HAckspace!" :: String
+
+:t str
+
+:t (+)
+
+
+--Numa => a -> a -> a
+
+:t sound
+:t sound "bn sn"
+
+:t d1
+--ParamPattern -> IO ()
+
+sound "bd sn" :: ParamPattern
+d1 (sound "bd sn")
+
+:t silence
+Silence :: Pattern a
+
+TLDR types
+Type classes
+
+somemats :: Int -> Int
+somemaths a = (a + 1) * 2
+
+somemaths 2 * 3 # notice that about the precedence of function
+
+#what the dollar does?
+
+:t ($)
+
+
+-------------- My function ---------------------
+
+mysum :: Integer -> Integer -> Integer -> Integer
+mysum a b c = a + b + c
+
+mysum 3 3 3
+
+:t mysum
+
+d1 $ every 4 (slow 2) $ sound "bd hh sn hh"
+
+:t slow
+:t every
+
+-------------- Currying ---------------------
+
+#Giving a function to few arguments is fine. It will return another function
+
+
+{-----------------_-----------------_-----------------_-----------------}
+
+Evan - doing an AV performance w/ a backend in Processing
+
+@pixelpusher
+
+Editor: uses vim
+
+Commands
+colormode
+gsmode
+imgmode
+
+definition of different scales
+
+#check github
+
+uses jux (rev) iter sometimes chop
