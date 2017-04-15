@@ -38,6 +38,7 @@ d3 silence
 
 d3 $ sound "bd sn hh cp mt arpy drum odx bd arpy bass2 feel future"
 
+d3 $ sound "hh27:10 hh hh:1"
 {-----------------_-----------------_-----------------_-----------------}
 
 # default beat to 1bps
@@ -51,6 +52,7 @@ hush
 
 
 {-----------------_-----------------_-----------------_-----------------}
+
 
 
 d1 $ sound "[if/2 ~ ~ if/2 ~ ~ if/2 ~ ]"
@@ -77,6 +79,8 @@ d1 $ sound "bd(5,8,2)"
 d1 $ e 3 8 $ sound "bd*2 [sn cp]"
 
 d1 $ sound "bd([5 3]/2,8)"
+
+d2 $ sound "hh/ sn"
 
 hush
 
@@ -110,7 +114,15 @@ d1 $ slow 2 $ sound "bd*16" # pan sine1
 
 hush
 
+d2  $ every 8 (const $ sound "hh hh hh" # nudge "[0 0.04]*4")
+    $ every 4 ( (# delay "0.25") . (# delaytime "0.5") .  (# room "0.25") .  (# delayfeedback "0.5") )
+    $ stack[ sound "sn:6(3,8)"
+    # speed "[~ 1.5 ~ 2]/3]" # room "0.03", every 4 (const $ sound "bd:7(2,8)") $ sound "bd:8(3,8)", sound "hh*8?"]
 
+d2 $ every 8 (const $ slowcat [sound "hh hh hh", sound "mt", sound "hh*4", sound "mt:2*4"] # nudge "[0 0.04]*4")
+   $ every 4 ( (# delay "0.25") . (# delaytime "0.5") .  (# room "0.25") .  (# delayfeedback "0.5") )
+   $ stack[ sound "sn:3(3,8)"
+   # speed "[~ 1.5 ~ 2]/3]" # room "0.03", every 4 (const $ sound "bd:7(2,8)") $ sound "bd:8(3,8)", sound "hh*8?"]
 
 {-----------------_-----------------_-----------------_-----------------}
 

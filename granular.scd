@@ -2,6 +2,7 @@
 "My name is frantic o".speak
 "and This is Electro-Buto".speak
 
+"qerez dah MUITO BEI Ginho?".speak
 
 s.postln;
 s.addr;
@@ -103,10 +104,10 @@ SynthDef.new(\tone, {
 )
 
 x = Synth.new(\tone, [\gate, 1]);
-x.set(\freq, 70)
+x.set(\freq, 50)
 x.set(\pan, 0)
-x.set(\nharm, 120)
-x.set(\detune, 2)
+x.set(\nharm, 60)
+x.set(\detune, 12)
 x.set(\amp, 1.9)
 x.set(\gate, 0)
 
