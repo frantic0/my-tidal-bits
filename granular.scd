@@ -31,8 +31,9 @@ SynthDescLib.global[\tone].makeWindow;
 
 // Setup:
 // 1. Eval this snippet for server boot and async load of SuperDirt
-// 2. Execute the OSCdev func
+// 2. Execute OSCdef.freeAll; and then the OSCdef func
 // 3. Setup Max
+//
 
 (
 // From https://github.com/musikinformatik/SuperDirt
@@ -106,12 +107,12 @@ SynthDef.new(\tone, {
 x = Synth.new(\tone, [\gate, 1]);
 x.set(\freq, 50)
 x.set(\pan, 0)
-x.set(\nharm, 60)
-x.set(\detune, 12)
+x.set(\nharm, 23)
+x.set(\detune, 22)
 x.set(\amp, 1.9)
 x.set(\gate, 0)
 
-
+x.free;
 
 (
 OSCdef.new(
@@ -120,9 +121,9 @@ OSCdef.new(
 		arg msg, time, addr, port;
 		/*[msg, time, addr, port].postln;*/
 		/*msg[1].postln;*/
-		x.set(\freq, msg[1] * 100)
-		/*x.set(\pan, msg[1].linexp(0, 1, 0.001, 1))*/
-		/*x.set(\freq, msg[1].linexp(0,1,20,100))*/
+		/*x.set(\freq, msg[1] * 100);*/
+		x.set(\pan, msg[1].linexp(0, 1, 0.001, 1));
+		x.set(\freq, msg[1].linexp(0,1,20,100));
 	},
 	'/pd'
 );
@@ -173,6 +174,9 @@ y.set(\maxrq, 1);
 y.set(\gate, 0) ;
 y.set(\gate, 0);
 
+y.free;
+
+
 (
 // Create a group to make it easy to address all the synths as a group to set params
 g = Group.new;
@@ -183,17 +187,53 @@ OSCdef.new(\myo, {
 	arg msg, time, addr, port;
 	/*[msg, time, addr, port].postln;*/
 	/*msg[1..18].postln;*/
+	/*msg.postln;*/
 	/*[msg[1],msg[7],msg[8]].postln;*/
-	g.set(
+
+	/*x.set(\detune, msg[16].linexp(-1.00, 3.00, 0.001, 80));
+	x.set(\maxrq, msg[7].linexp(-1.0, 1.0, 0.01, 0.5));*/
+
+	/*g.set(
 		// pitch controls detune, 1000Hz to 80Hz, affecting the rate of filtered pops; pointing up high detune will fuse the oscillation of the of the sawtooth
 		\detune, msg[8].linexp(-1.00, 3.00, 0.001, 80),
 		// roll controls filter quality left to right (hq to lq)
 		\maxrq, msg[7].linexp(-1.0, 1.0, 0.01, 0.5),
 		// acceleration makes folding distortion more pronounced
 		\boost, (msg[1] * 10).linlin(-1.0, 1.0, 1, 16)
-	);
+	);*/
 	}, '/myo'
 );
+
+Quarks.install("BBCut")
+
+var players = 0;
+var playingParticles = false;
+
+OSCdef.new(\myo, {
+	arg msg, time, addr, port;
+  var sum = abs(msg[11])+abs(msg[12])+abs(msg[13])+abs(msg[14])+abs(msg[15])+abs(msg[16])+abs(msg[17]);
+	if(sum > 300,
+		{
+			if(playingParticles == false,
+				{
+					playingParticles = true;
+					players = players+1;
+					{
+						200.do{arg i;
+							var timeprop = (i/199.0)**3;
+							Synth(\sinegrain,[\freq,exprand(100,3000-(20*i)),\amp, exprand(0.05,0.1), \pan, 1.0.rand2]);
+							rrand((timeprop*0.1).max(0.01),timeprop*0.3).wait
+						};
+						playingParticles = false;
+						players = players-1;
+					}.fork;
+				}
+			)
+		},
+	)
+	}, '/myo'
+);
+
 
 OSCdef(\myo).disable;
 
@@ -241,6 +281,19 @@ OSCdef.new(\bbutton, {
 OSCdef(\bbutton).disable;
 
 
+
+
+OSCdef.new(\leap, {
+	arg msg, time, addr, port;
+	[msg, time, addr, port].postln;
+	/*msg[1..18].postln;*/
+	/*[msg[1],msg[7],msg[8]].postln;*/
+
+	}, '/leap'
+);
+
+OSCdef(\leap).disable;
+
 ######################################################
 
 (
@@ -284,7 +337,7 @@ Synth(\sinegrain,[\freq,rrand(100,10000),\amp, exprand(0.05,0.1), \pan, 1.0.rand
 //schedule 200 random grains over time, decreasing the range of allowed random frequencies and lowering the density over time
 (
 {
-2000.do{arg i;
+200.do{arg i;
 var timeprop = (i/199.0)**3;
 
 	Synth(\sinegrain,[\freq,exprand(100,3000-(20*i)),\amp, exprand(0.05,0.1), \pan, 1.0.rand2]);
