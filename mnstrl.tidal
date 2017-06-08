@@ -173,6 +173,7 @@ mysum a b c = a + b + c
 
 mysum 3 3 3
 
+ 
 :t mysum
 
 d1 $ every 4 (slow 2) $ sound "bd hh sn hh"
