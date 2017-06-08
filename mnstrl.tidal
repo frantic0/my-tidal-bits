@@ -173,6 +173,7 @@ mysum a b c = a + b + c
 
 mysum 3 3 3
 
+
  
 :t mysum
 
