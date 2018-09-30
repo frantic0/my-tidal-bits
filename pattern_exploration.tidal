@@ -1,0 +1,104 @@
+Samples
+d1 $ sound "bd sd hh cp mt arpy drum odx bd arpy bass2 feel future"
+d1 $ sound "bd sd hh cp mt drum odx bd feel future"
+d1 $ sound "sd hh cp mt arpy drum odx bd arpy bass2 feel future"
+d1 $ sound "hh cp mt arpy drum odx bd arpy bass2 feel future"
+d1 $ sound "cp mt arpy drum odx bd arpy bass2 feel future"
+d1 $ sound "mt arpy drum odx bd arpy bass2 feel future"
+d1 $ sound "arpy drum odx bd arpy bass2 feel future"
+d1 $ sound "drum odx bd arpy bass2 feel future"
+d1 $ sound "odx bd arpy bass2 feel future"
+d1 $ sound "bd arpy bass2 feel future"
+d1 $ sound "arpy bass2 feel future"
+d1 $ sound "bass2 feel future"
+d1 $ sound "feel future"
+
+d1 $ sound "flick sid can metal future gabba sn mouth co gretsch mt arp h cp"
+d1 $ sound "cr newnotes bass crow hc tabla bass0 hh bass1 bass2 oc bass3 ho"
+d1 $ sound "odx diphone2 house off ht tink perc bd industrial pluck trump"
+d1 $ sound "printshort jazz voodoo birds3 procshort blip drum jvbass psr"
+d1 $ sound "wobble drumtraks koy rave bottle kurt latibro rm sax lighter lt"
+d1 $ sound "feel less stab ul"
+d1 $ sound "less stab ul"
+d1 $ sound "stab ul"
+
+
+
+d1 $ sound "bd future bass1"
+d1 $ sound "bd future bass2"
+d1 $ sound "odx bd bass2 feel future"
+d1 $ sound "odx bd bass1 feel future"
+d1 $ sound "odx bd bass0 feel future"
+
+Groups
+d1 $ sound "[bd sn:6] bd"
+d1 $ sound "bd [hh hh hh hh hh hh]"
+d1 $ sound "bd [hh hh hh hh hh]"
+d1 $ sound "bd [hh hh hh hh]"
+d1 $ sound "bd [hh hh hh]"
+d1 $ sound "bd [hh hh]"
+d1 $ sound "[bd bd][bd hh] hh"
+d1 $ sound "[bd bd bd][bd hh] hh sn:5"
+d1 $ sound "[bd hh bd][hh bd hh] hh sn:5"
+d1 $ sound "bd [bd hh] hh"
+d1 $ sound "bd [bd hh] hh"
+d1 $ sound "bd [bd hh] hh"
+d1 $ sound "bd [bd hh] hh"
+d1 $ sound "bd [bd hh] hh"
+
+d1 $ sound "bd sn:3 bd sn:3"
+d1 $ sound "bd [hh sn:2] bd sn:2"
+d1 $ sound "bd:6 ~ ~ ~ sn:7 ~ ~ ~ bd ~ ~ ~ sn:1 ~ ~ ~"
+d1 $ sound "bd ~ hh ~ sn:2 ~ hh ~ bd ~ ~ ~ sn:2 ~ ~ ~"
+d1 $ sound "bd ~ hh ~ sn:2 ~ hh ~ bd ~ hh ~ sn:2 ~ hh:8 ~" # speed "2"
+d1 $ sound "bd ~ hh ~ sn:2 ~ hh ~ bd ~ hh ~ sn:2 ~ hh:8 ~"
+d1 $ sound "bd:4 ~ [hh hh hh] ~ sn:2 ~ hh ~ [bd ~ sn:3 ~ bd] ~ hh ~ sn:2 ~ ~ ~"
+d1 $ sound "bd:4 ~ [hh hh:7 hh] ~ sn:2 ~ hh ~ bd ~ hh ~ sn:2 ~ ~ ~"
+
+d1 $ sound "bd hh sn:2 hh bd hh sn:2 hh:8 "
+
+
+Poyrhythyms
+d1 $ sound "[bd bd bd sd cp sd cp]"
+d1 $ sound "[bd:0 bd:1 bd:3, sn cp:0 sn cp:1]"
+d1 $ sound "[bd:0 bd:1 bd:3, sn cp:0 sn cp:1, hh hh:3 hh]"
+d1 $ sound "[bd:0 bd:1 bd:3, sn cp:0 sn cp:1, hh hh:3 hh]"
+d1 $ sound "[bd:0 bd:1 bd:3]"
+d1 $ sound "[sn cp:0 sn cp:1]"
+
+-- One per cycle
+d1 $ sound "[bd:0 bd:1 bd:3 <sn cp:0 sn cp:1> hh hh:3 hh]"
+d1 $ sound "[bd:0 ~ bd:3 <sn:1 cp:0 sn:3 cp:1>, hh hh:3 hh]"
+
+d1 $ jux (rev) $ sound "bd:7*32" # pan sine
+d2 $ jux (rev) $ sound "hh:8*888888" # pan cosine
+
+-- every 4 - pattern that makes an interesting pattern roll like after 4 mesure
+d2 $ (every 4) (zoom (0.25, 0.75) )$ sound "bd*2 hh*3 [sn bd]*2 drum"
+
+d3 $   sound "rave" # speed "2"
+d3 $ slow 2 $ chop 8 $ sound "procshort"
+d3 $ slow 2 $ chop 8 $ sound "newnotes"
+d3 $ sound "newnotes"
+d3 $ sound "newnotes" # speed "2"
+
+d2 $ sound "rave"
+d2 silence
+cps 0.5
+hush
+
+d1 $ brak $ sound "[feel feel:3, hc:3 hc:2 hc:4 ho:1]"
+d1 $ sound "[feel feel:3, hc:3 hc:2 hc:4 ho:1]"
+d1 $ sound "[feel feel:3 hc:3 hc:2 hc:4 ho:1]"
+d1 $ sound "[feel, feel:3 hc:3 hc:2 hc:4 ho:1]"
+d1 $ sound "[feel feel:3 hc:3, hc:2 hc:4 ho:1]"
+
+d1 $ sound "[[rave rave], rave]" # legato "4"
+d1 $ sound "[[rave rave] rave]" # legato "8"
+Stacks
+d2 $ stack [
+sound "[bd bd sn bd]" # speed 0.8 # accelerate 2,
+sound "[ [hc:2 ~ hc:2] [~ hc:2 hc:2] [~ hc:2 ~] [hc:2 ~ hc:2]]" # speed 1,
+sound "[[cp:4 ~ cp:4] ~ ~ ~ ]" # speed 0.9,
+sound "[glitch:2 ~  ~  glitch:2]" # speed 1.4
+]

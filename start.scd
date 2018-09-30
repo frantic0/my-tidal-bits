@@ -1,32 +1,4 @@
 
-"My name is frantic o".speak
-"and This is Electro-Buto".speak
-
-"qerez dah MUITO BEI Ginho?".speak
-
-s.postln;
-s.addr;
-s.serverRunning;
-s.avgCPU;
-
-s.boot;
-s.options.numBuffers = 1024 * 256;
-s.freeAll;
-SuperDirt.start;
-s.kill;
-
-{Pan2.ar(SinOsc.ar(440,0,0.1),0.0)}.play
-{SinOsc.ar(440*SinOsc.ar(4, mul:0.125, add:1), 0, 1)}.scope
-{RLPF.ar(Saw.ar(333), SinOsc.ar(1).range(400, 14000), 0.1)}.freqscope
-
-UGen.browse
-
-"open /Users/francisco/Library/Application Support/SuperCollider/downloaded-quarks/Dirt-Samples".
-
-SynthDescLib.global.read;
-SynthDescLib.global[\tone].makeWindow;
-
-
 ######################################################
 
 // Setup:
@@ -56,6 +28,44 @@ s.waitForBoot {
 }
 )
 
+######################################################
+
+
+"My name is frantic o".speak
+"and This is Electro-Buto".speak
+"qerez daah MUITOosh Bay gin Osh?".speak
+
+o = Server.local.options;
+o.device ="JBL Charge 3 "
+s.boot;
+SuperDirt.start;
+
+s.postln;
+s.addr;
+s.serverRunning;
+s.avgCPU;
+
+s.boot;
+s.options.numBuffers = 1024 * 256;
+s.freeAll;
+SuperDirt.start;
+s.kill;
+
+{Pan2.ar(SinOsc.ar(440,0,0.1),0.0)}.play
+{SinOsc.ar(440*SinOsc.ar(4, mul:0.125, add:1), 0, 1)}.scope
+{RLPF.ar(Saw.ar(333), SinOsc.ar(1).range(400, 14000), 0.1)}.freqscope
+
+UGen.browse
+
+"open /Users/francisco/Library/Application Support/SuperCollider/downloaded-quarks/Dirt-Samples".
+
+SynthDescLib.global.read;
+SynthDescLib.global[\tone].makeWindow;
+
+
+
+
+
 
 ######################################################
 
@@ -72,8 +82,9 @@ SynthDef(\stereosine, {
 )
 
 a = Synth(\stereosine, [\freq, 777]); // we assign the synth to a variable
-a.set(\freq, 444) // set the frequency from outside
-a.set(\amp, 0.8)
+a.set(\freq, 664) // set the frequency from outside
+a.set(\freq, 777) // set the frequency from outside
+a.set(\amp, 0.5)
 a.set(\pan, -1)
 a.set(\pan, 1)
 a.set(\pan, 0)
@@ -105,7 +116,7 @@ SynthDef.new(\tone, {
 )
 
 x = Synth.new(\tone, [\gate, 1]);
-x.set(\freq, 50)
+x.set(\freq, 150)
 x.set(\pan, 0)
 x.set(\nharm, 23)
 x.set(\detune, 22)
@@ -207,7 +218,7 @@ OSCdef.new(\myo, {
 Quarks.install("BBCut")
 
 
-
+(
 var players = 0;
 var playingParticles = false;
 
@@ -235,7 +246,7 @@ OSCdef.new(\myo, {
 	)
 	}, '/myo'
 );
-
+)
 
 OSCdef(\myo).disable;
 

@@ -1,0 +1,58 @@
+-- NOTE: 'audio' atom package for audio preview
+
+
+hush
+-- 140 bpm, with four beats per cycle (0.583)
+cps(120/60/4)
+cps 0.5
+-- 1 cycle per second - 1 beat 0.25s
+cps(240/60/4)
+cps 1
+
+-- Kick element - the most prominent
+d1 $ sound "bd*4"
+
+-- four-to-the-floor kick — four beats on the measure
+d1 $ sound "bd:0*4"
+
+-- Kick quality: hard, soft, gentle, pounding, booming
+d1 $ sound "bd:0*4"
+d1 $ sound "bd:1*4"
+d1 $ sound "bd:2*4"
+d1 $ sound "bd:3*4"
+d1 $ sound "bd:4*4"
+d1 $ sound "bd:5*4"
+d1 $ sound "bd:6*4"
+d1 $ sound "bd:7*4"
+d1 $ sound "bd:8*4"
+d1 $ sound "bd:8*4"
+d1 $ sound "bd:9*4"
+hush
+
+-- Snare element - provider of the backbeat
+
+d1 $ sound "sn:1"
+d2 $ sound "~ sn:1 ~ sn:1"
+d2 $ sound "sn:1 ~ sn:1 ~"
+
+-- Ride cymbal element
+
+d1 $ sound "db:10"
+d2 $ sound "[~ db:10]*4"
+hush
+
+
+
+
+-- Simple rock patterns
+
+d1 $ sound "bd [sn:3] bd [sn:3]"
+d1 $ sound "bd [bd sn:3] bd [bd sn:3]"
+d1 $ sound "bd [hh sn:2] bd sn:2"
+d1 $ sound "bd:6 ~ ~ ~ sn:7 ~ ~ ~ bd ~ ~ ~ sn:1 ~ ~ ~"
+d1 $ sound "bd:6 ~ cr ~ sn:7 ~ ~ ~ bd ~ ~ ~ sn:1 ~ ~ ~"
+d1 $ sound "bd ~ hh ~ sn:2 ~ hh ~ bd ~ ~ ~ sn:2 ~ ~ ~"
+d1 $ sound "bd ~ hh ~ sn:2 ~ hh ~ bd ~ hh ~ sn:2 ~ hh:8 ~" # speed "2"
+d1 $ sound "bd ~ hh ~ sn:2 ~ hh ~ bd ~ hh ~ sn:2 ~ hh:8 ~"
+d1 $ sound "bd:4 ~ [hh hh hh] ~ sn:2 ~ hh ~ [bd ~ sn:3 ~ bd] ~ hh ~ sn:2 ~ ~ ~"
+d1 $ sound "bd:4 ~ [hh hh:7 hh] ~ sn:2 ~ hh ~ bd ~ hh ~ sn:2 ~ ~ ~"
